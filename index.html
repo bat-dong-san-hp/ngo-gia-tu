@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mặt Bằng Cho Thuê</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="max-w-4xl mx-auto p-6">
+    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+      <!-- Image Carousel -->
+      <div class="relative w-full overflow-hidden">
+        <div class="flex w-full overflow-x-auto space-x-4 p-4">
+          <img src="images/nha01.jpg" alt="Property Image 1" class="w-full max-w-md h-64 object-cover rounded-xl flex-shrink-0 cursor-pointer" onclick="openModal(0)">
+          <img src="images/nha02.jpg" alt="Property Image 2" class="w-full max-w-md h-64 object-cover rounded-xl flex-shrink-0 cursor-pointer" onclick="openModal(1)">
+        </div>
+      </div>
+      
+      <!-- Modal -->
+      <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center hidden">
+        <div class="relative">
+          <img id="modalImage" src="" alt="Enlarged Image" class="max-w-full max-h-screen rounded-lg">
+          <button class="absolute top-2 right-2 text-black text-4xl" onclick="closeModal()">&times;</button>
+          <button id="prevButton" class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-4xl" onclick="prevImage()">&#10094;</button>
+          <button id="nextButton" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-4xl" onclick="nextImage()">&#10095;</button>
+        </div>
+      </div>
+      
+      <script>
+        const images = ['images/nha01.jpg', 'images/nha02.jpg'];
+        let currentIndex = 0;
+      
+        function openModal(index) {
+          currentIndex = index;
+          const modal = document.getElementById('imageModal');
+          const modalImage = document.getElementById('modalImage');
+          modalImage.src = images[currentIndex];
+          modal.classList.remove('hidden');
+        }
+      
+        function closeModal() {
+          const modal = document.getElementById('imageModal');
+          modal.classList.add('hidden');
+        }
+      
+        function prevImage() {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          document.getElementById('modalImage').src = images[currentIndex];
+        }
+      
+        function nextImage() {
+          currentIndex = (currentIndex + 1) % images.length;
+          document.getElementById('modalImage').src = images[currentIndex];
+        }
+      </script>
+
+      <div class="p-6">
+        <h1 class="text-3xl font-bold mb-2">Mặt Bằng Ngang 12m - Ngô Gia Tự</h1>
+        <p class="text-gray-600 mb-4">Số 678,680,682 mặt đường Ngô Gia Tự</p>
+        <p class="text-xl font-semibold text-green-600 mb-4">68tr / Tháng</p>
+        <p class="text-gray-700 mb-6">
+            Ngang 12m - Thông sàn - Vị trí đắc địa <br>
+            Diện tích 300m2/1 sàn - Diện tích sử dụng 550m2 <br>
+            Vỉa hè 6.5m - Phù hợp ngân hàng, siêu thị... <br>
+            Giá thuê mong muốn : Call 0913511088
+        </p>
+
+        <h2 class="text-2xl font-semibold mb-4">Chính chủ: anh Hà</h2>
+        <div class="flex flex-col md:flex-row md:items-center md:space-x-6">
+          <img src="images/bo.jpg" alt="Landlord Photo" class="w-40 h-40 object-cover rounded-full mb-4 md:mb-0">
+          <div class="space-y-2">
+            <p class="text-gray-700">Anh Hà có kinh nghiệm lâu năm trong bất động sản ở Hải Phòng. <br>
+                Website này được tạo bởi Hưng, con zai ảnh :3
+            </p>
+            <div class="flex space-x-4">
+              <a href="https://www.facebook.com/chooto.haiphong" class="text-blue-600 hover:underline">Facebook</a>
+              <a href="https://baophapluat.vn/bat-mi-bi-quyet-nuoi-day-hai-con-cung-dat-hcv-olympic-toan-quoc-te-post483581.html" class="text-blue-600 hover:underline">Báo Pháp Luật về bí quyết nuôi con</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
